@@ -1,0 +1,13 @@
+# Python environment
+venv/
+__pycache__/
+*.pyc
+
+# Django Database
+db.sqlite3
+
+# Environment Variables (You should move your API keys into a .env file soon!)
+.env
+
+# PyCharm specific files
+.idea/

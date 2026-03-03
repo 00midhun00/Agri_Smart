@@ -1,0 +1,86 @@
+{% extends "agri_app/base.html" %}
+{% block content %}
+<div class="container py-5">
+
+    <div class="row mb-5">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden h-100">
+                <img src="{{ image_url }}" class="img-fluid w-100" style="object-fit: cover; max-height: 400px;" alt="Crop Image">
+                <div class="card-footer bg-light text-center border-0 py-3">
+                    <small class="text-muted fw-bold"><i class="fas fa-camera me-2"></i>Uploaded Specimen</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-4 h-100">
+                <div class="card-header bg-success text-white py-3 d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-stethoscope me-2"></i>Diagnosis Report</h4>
+                    {% if confidence %}
+                        <span class="badge bg-light text-success fs-6 border border-2 border-white shadow-sm">
+                            {{ confidence }}% Match
+                        </span>
+                    {% endif %}
+                </div>
+
+                <div class="card-body p-4 p-md-5">
+                    {% if error %}
+                        <div class="alert alert-danger shadow-sm border-0"><i class="fas fa-exclamation-triangle me-2"></i> {{ error }}</div>
+                    {% else %}
+
+                        <div class="mb-4 pb-3 border-bottom">
+                            <h6 class="text-uppercase text-muted fw-bold mb-1" style="letter-spacing: 1px;">Plant Identity</h6>
+                            <h3 class="text-dark fw-bold mb-0">{{ plant_name }}</h3>
+                            <p class="text-muted fst-italic mb-0"><i class="fas fa-dna me-2"></i>{{ biological_name }}</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h6 class="text-uppercase text-danger fw-bold mb-1" style="letter-spacing: 1px;">Detected Condition</h6>
+                            <h2 class="text-danger fw-bolder mb-1">{{ disease }}</h2>
+                        </div>
+
+                        {% if confidence %}
+                        <div class="mb-4 mt-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <small class="text-muted fw-bold text-uppercase" style="letter-spacing: 1px;">AI Confidence Score</small>
+                            </div>
+                            <div class="progress" style="height: 12px; border-radius: 10px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{ confidence }}%;" aria-valuenow="{{ confidence }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="mt-4 pt-3 d-flex gap-3">
+                            <a href="{% url 'ai_prediction' %}" class="btn btn-outline-success fw-bold w-50 py-2"><i class="fas fa-redo me-2"></i>New Scan</a>
+                            <a href="{% url 'dashboard' %}" class="btn btn-success fw-bold w-50 py-2"><i class="fas fa-home me-2"></i>Dashboard</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not error %}
+    <div class="row">
+        <div class="col-12">
+            <h4 class="fw-bold mb-4 text-dark"><i class="fas fa-notes-medical me-2 text-success"></i>Comprehensive Treatment Plan</h4>
+
+            <div class="alert bg-white shadow-sm mb-4 p-4 p-md-5" style="border: 1px solid #c3e6cb; border-left: 8px solid #198754 !important; border-radius: 16px;">
+                <h5 class="text-success fw-bold mb-3 pb-3 border-bottom"><i class="fas fa-leaf me-2 fs-4 align-middle"></i>Organic & Natural Remedies</h5>
+                <div class="text-dark" style="white-space: pre-line; line-height: 1.8; font-size: 1.05rem;">
+                    {{ cures.natural }}
+                </div>
+            </div>
+
+            <div class="alert bg-white shadow-sm p-4 p-md-5" style="border: 1px solid #b8daff; border-left: 8px solid #0d6efd !important; border-radius: 16px;">
+                <h5 class="text-primary fw-bold mb-3 pb-3 border-bottom"><i class="fas fa-flask me-2 fs-4 align-middle"></i>Chemical Interventions</h5>
+                <div class="text-dark" style="white-space: pre-line; line-height: 1.8; font-size: 1.05rem;">
+                    {{ cures.chemical }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

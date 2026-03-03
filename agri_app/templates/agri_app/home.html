@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri Smart | The Future of Farming</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0a1f0d; /* Fallback dark green */
+        }
+
+        /* Hero Background with Rich Gradient Overlay */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            background-image: linear-gradient(135deg, rgba(10, 31, 13, 0.85) 0%, rgba(27, 94, 32, 0.6) 100%),
+                              url('https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Transparent Top Navbar */
+        .navbar-custom {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff !important;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand span {
+            color: #79d70f;
+        }
+
+        /* Glassmorphism Content Box */
+        .hero-content {
+            color: white;
+            padding: 3.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #79d70f, #a8ff3e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead-text {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Feature Badges */
+        .feature-badges {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-custom {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+            color: #e2f1e2;
+        }
+
+        .badge-custom i {
+            color: #79d70f;
+            margin-right: 6px;
+        }
+
+        /* Modern Buttons */
+        .btn-custom {
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-login {
+            background-color: #79d70f;
+            color: #0a1f0d;
+            box-shadow: 0 8px 20px rgba(121, 215, 15, 0.3);
+            margin-right: 15px;
+        }
+
+        .btn-login:hover {
+            background-color: #8af11b;
+            color: #0a1f0d;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(121, 215, 15, 0.4);
+        }
+
+        .btn-register {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-register:hover {
+            background-color: white;
+            color: #0a1f0d;
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero-content { padding: 2rem; margin: 15px; }
+            .btn-custom { width: 100%; margin-bottom: 15px; margin-right: 0; text-align: center; }
+            .feature-badges { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar-custom animate__animated animate__fadeInDown">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand text-decoration-none" href="#">Agri<span>Smart</span></a>
+            <div class="d-none d-md-block">
+                <span class="text-white-50 small"><i class="fas fa-shield-alt me-1"></i> Secure Platform</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+
+                    <div class="hero-content animate__animated animate__zoomIn animate__delay-1s">
+
+                        <div class="feature-badges">
+                            <span class="badge-custom"><i class="fas fa-microscope"></i> AI Disease Diagnosis</span>
+                            <span class="badge-custom"><i class="fas fa-store"></i> Direct Market Linkage</span>
+                            <span class="badge-custom"><i class="fas fa-tractor"></i> Machinery Rentals</span>
+                        </div>
+
+                        <h1>Cultivating the <span class="text-gradient">Future</span> of Farming.</h1>
+
+                        <p class="lead-text">
+                            An intelligent ecosystem designed to empower modern agriculturalists.
+                            From instant crop disease detection to seamless equipment rentals and direct buyer connections.
+                        </p>
+
+                        <div class="d-flex flex-column flex-md-row">
+                            <a href="{% url 'login' %}" class="btn btn-custom btn-login">
+                                <i class="fas fa-sign-in-alt me-2"></i> Access Platform
+                            </a>
+                            <a href="{% url 'register' %}" class="btn btn-custom btn-register">
+                                Create Free Account
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

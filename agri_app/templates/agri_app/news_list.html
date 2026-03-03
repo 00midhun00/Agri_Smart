@@ -1,0 +1,55 @@
+{% extends "agri_app/base.html" %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold text-success"><i class="fas fa-newspaper me-2"></i>Agri-Market News</h2>
+
+        {% if request.user.role == 'Farmer' or request.user.user_type == 'Farmer' %}
+            <a href="{% url 'post_news' %}" class="btn btn-success fw-bold">Post an Update</a>
+        {% endif %}
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for item in news %}
+                <div class="card shadow-sm border-0 mb-4 rounded-4 overflow-hidden">
+
+                    {% if item.image %}
+                        <img src="{{ item.image.url }}" class="card-img-top" style="max-height: 400px; object-fit: cover;">
+                    {% endif %}
+
+                    <div class="card-body p-4">
+                        <h4 class="card-title fw-bold text-dark">{{ item.title }}</h4>
+                        <p class="text-muted small mb-3">
+                            <i class="fas fa-user-edit me-1"></i> Posted by {{ item.author.full_name|default:item.author.username }} |
+                            <i class="fas fa-clock me-1"></i> {{ item.created_at|date:"F d, Y" }}
+                        </p>
+
+                        <p class="card-text fs-5 text-dark">{{ item.content|linebreaksbr }}</p>
+
+                        {% if request.user == item.author %}
+                            <hr class="mt-4 mb-3">
+                            <div class="d-flex gap-2 justify-content-end">
+                                <a href="{% url 'edit_news' item.id %}" class="btn btn-sm btn-outline-secondary fw-bold">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </a>
+                                <form action="{% url 'delete_news' item.id %}" method="POST" onsubmit="return confirm('Delete this news post forever?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-outline-danger fw-bold">
+                                        <i class="fas fa-trash-alt me-1"></i>Delete
+                                    </button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="text-center py-5 bg-white shadow-sm rounded-4 border">
+                    <i class="fas fa-bullhorn fa-4x text-muted mb-3"></i>
+                    <h4 class="text-muted">No news updates yet.</h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "agri_app/base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h3>AI Crop Disease Analysis</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="form-label fw-bold">1. Upload Image</label>
+                <input type="file" name="crop_image" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">2. Select AI Engine</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ai_type" value="cnn" checked>
+                    <label class="form-check-label">Local CNN (Fast & Basic)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ai_type" value="gemini">
+                    <label class="form-check-label">Gemini AI (Advanced Expert Advice)</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Start Analysis</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
