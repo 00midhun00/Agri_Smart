@@ -108,7 +108,7 @@ from PIL import Image
 
 def predict_with_gemini(image_path):
     # Ensure your key is pasted correctly here
-    client = genai.Client(api_key="AIzaSyACGdnCl8T_rHunJ1x2_CBBgrGJmYBliJM")
+    client = genai.Client(api_key="")
 
     try:
         img = Image.open(image_path)
